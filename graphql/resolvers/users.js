@@ -1,6 +1,7 @@
 const { UserInputError } = require('apollo-server')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const { titleCase } = require('title-case')
 require('dotenv').config()
 
 const User = require('../../models/User')
@@ -33,7 +34,7 @@ module.exports = {
         confirmPassword,
         image
       )
-
+      username = titleCase(username)
       if (!valid) {
         throw new UserInputError('Errors', { errors })
       }
@@ -78,6 +79,7 @@ module.exports = {
       if (!valid) {
         throw new UserInputError('Errors', { errors })
       }
+      username = titleCase(username)
 
       const user = await User.findOne({ username })
 
