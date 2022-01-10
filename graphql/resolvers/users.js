@@ -13,7 +13,7 @@ function generateToken(user) {
   return jwt.sign(
     {
       id: user._id,
-      email: user.email,
+      image: user.image,
       username: user.username,
     },
     process.env.SECRET_KEY,
@@ -24,13 +24,14 @@ function generateToken(user) {
 module.exports = {
   Mutation: {
     register: async (parent, { input }, context) => {
-      let { username, password, confirmPassword, email } = input
+      let { username, password, confirmPassword, email, image } = input
       //validate user data
       const { errors, valid } = validateRegisterInput(
         username,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        image
       )
 
       if (!valid) {
@@ -56,6 +57,7 @@ module.exports = {
         email,
         username,
         password,
+        image,
         createdAt: new Date().toISOString(),
       })
 

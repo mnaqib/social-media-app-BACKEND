@@ -21,6 +21,7 @@ module.exports = gql`
     body: String!
     createdAt: String!
     username: String!
+    image: String!
     comments: [Comment]!
     likes: [Like]!
     likesCount: Int
@@ -32,6 +33,7 @@ module.exports = gql`
     email: String!
     token: String!
     username: String!
+    image: String!
     createdAt: String!
   }
 
@@ -53,5 +55,6 @@ module.exports = gql`
     password: String!
     confirmPassword: String!
     email: String!
+    image: String!
   }
 `

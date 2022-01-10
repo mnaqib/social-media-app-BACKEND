@@ -2,11 +2,15 @@ exports.validateRegisterInput = (
   username,
   email,
   password,
-  confirmPassword
+  confirmPassword,
+  image
 ) => {
   const errors = {}
   if (username.trim() === '') {
     errors.username = 'Username must not be empty'
+  }
+  if (image.trim() === '') {
+    errors.image = 'Image must not be empty'
   }
   if (email.trim() === '') {
     errors.email = 'Email must not be empty'
